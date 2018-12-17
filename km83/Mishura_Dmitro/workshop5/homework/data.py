@@ -74,7 +74,39 @@ def new_data(dict):
         dict[ele["client"]].append(ele)
     else:
         dict[ele["client"]]=[ele]
+def most_expensive(dictionary):
+    prod=[]
+    price=[]
+    for ele in dictionary.values():
+        for elem in ele:
+            prod.append(elem[" product"])
+            price.append(float(elem[" price"]))
+    index1=price.index(max(price))
+    print(prod[index1])
+#most_expensive(dict1)
 #new_data(dict1)
+def most_wanted(dictionary):
+    dict3=dict()
+    ammount=[]
+    for ele in dictionary.values():
+        for elem in ele:
+            if elem[" product"] in dict3.keys():
+                a=dict3[elem[" product"]]
+                a=a+1
+                dict3[elem[" product"]]=a
+            else:
+                dict3[elem[" product"]]=1
+    for ele in dict3.values():
+        ammount.append(ele)
+    a=max(ammount)
+    b=min(ammount)
+    for key,ele in dict3.items():
+        if(ele==a):
+            print("max-",key)
+        elif(ele==b):
+            print("min-",key)
+    print(dict3)
+most_wanted(dict1)
 print(dict1)
 #print(bigdata[0]["client"])
 #print (set(arr1[0]).intersection(arr1[1]))
