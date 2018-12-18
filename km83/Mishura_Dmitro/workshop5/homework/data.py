@@ -1,6 +1,7 @@
 import os.path
 import plotly
 import plotly.graph_objs  as go
+from reg_lib import*
 file = open("/home/dima/amis/amis/example/Tereshchenko_Igor/workshop5/source/data/orders.csv")
 info = file.read()
 lines = info.splitlines()
@@ -69,7 +70,7 @@ def money(diction):
     plotly.offline.plot([diagram], filename="money.html")
 #money(dict1)
 def new_data(dict):
-    ele={"client":input()," date":input()," product":input()," quantity":input()," price":input()}
+    ele={"client":get_client()," date":get_date()," product":get_product()," quantity":get_quantity()," price":get_price()}
     if ele["client"] in dict.keys():
         dict[ele["client"]].append(ele)
     else:
@@ -84,7 +85,7 @@ def most_expensive(dictionary):
     index1=price.index(max(price))
     print(prod[index1])
 #most_expensive(dict1)
-#new_data(dict1)
+new_data(dict1)
 def most_wanted(dictionary):
     dict3=dict()
     ammount=[]
@@ -106,7 +107,7 @@ def most_wanted(dictionary):
         elif(ele==b):
             print("min-",key)
     print(dict3)
-most_wanted(dict1)
+#most_wanted(dict1)
 print(dict1)
 #print(bigdata[0]["client"])
 #print (set(arr1[0]).intersection(arr1[1]))
